@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>10_SpringMVC_IoC_Hibernate</display-name>
+  
+  
+  <!-- Declaration de la Servlet unique spring mvc -->
+  <servlet>
+  	<servlet-name>mvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	
+  	<!-- Charge le contexte de spring mvc -->
+  	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/mvc-context.xml</param-value>
+	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>mvc</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+  
+  <welcome-file-list>
+  	<welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+  
+  
+   <!-- Afficher les messages d'erreur sur la page xhtml -->
+  <context-param>
+  	<param-name>javax.faces.PROJECT_STAGE</param-name>
+  	<param-value>Development</param-value>
+  </context-param>
+  
+  
+  
+	<!-- Bootstraps the root web application context before servlet initialization -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	
+  <!-- Charge le contexte de Hibernate -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/application-context.xml</param-value>
+  </context-param>
+
+  	
+  	
+</web-app>
